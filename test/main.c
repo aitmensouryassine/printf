@@ -3,18 +3,12 @@
 
 int main(void)
 {
-	int len;
-	int len2;
+	int len = -4587, l1, l2;
 
-	len = _printf("Let's try to printf a simple sentence.\n");
-	len2 = printf("Let's try to printf a simple sentence.\n");
-	_printf("Character:[%c]\n", 'H');
-	printf("Character:[%c]\n", 'H');
-	_printf("String:[% %%s]\n", "I am a string !", NULL);
-	printf("String:[% %%s]\n", "I am a string !", NULL);
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
+	l1 = printf("%d %i\n", len, len);
+	l2 = _printf("%d %i\n", len, len);
 
-	printf("%d %d\n", len, len2);
+	printf("%d %i\n", l1, l1);
+	_printf("%d %i\n", l2, l2);
 	return (0);
 }
