@@ -53,7 +53,8 @@ int handle_print(const char *format, int *idx, va_list list)
 
 	specifier_t sp[] = {
 		{'c', print_char}, {'s', print_string},	{'%', print_percent},
-		{'i', print_int}, {'d', print_int}, {'\0', NULL}};
+		{'i', print_int}, {'d', print_int}, {'b', print_binary},
+		{'\0', NULL}};
 
 	i = 0;
 	while (sp[i].sym)
