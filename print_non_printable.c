@@ -35,7 +35,7 @@ int print_non_printable(va_list list, char buffer[])
 			buffer[j++] = map[tmp / 16];
 			buffer[j] = map[tmp % 16];
 
-			offset = hex_len + 1;
+			offset += hex_len + 1;
 		}
 	}
 	buffer[i + offset] = '\0';
