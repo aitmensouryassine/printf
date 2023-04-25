@@ -5,7 +5,7 @@
 int main(void)
 {
 
-    _printf("Yassine : [%r]\n", "Yassine");
+	_printf("[%R] [%R]\n", "ABCDEFGHIJKLMNOPQRSTUV", NULL);
 
     return (0);
 }

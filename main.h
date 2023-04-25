@@ -33,5 +33,6 @@ int print_upper_hexa(va_list, char[]);
 int print_non_printable(va_list, char[]);
 int print_pointer(va_list, char[]);
 int print_str_rev(va_list, char[]);
+int print_rot13(va_list);
 
 #endif

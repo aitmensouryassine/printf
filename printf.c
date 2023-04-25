@@ -80,7 +80,7 @@ int handle_print(const char *format, int *idx, va_list list, char buffer[])
 		{'u', print_unsigned}, {'X', print_upper_hexa},
 		{'x', print_hexadecimal}, {'o', print_octal},
 		{'S', print_non_printable}, {'p', print_pointer},
-		{'r', print_str_rev}, {'\0', NULL}};
+		{'r', print_str_rev}, {'R', print_rot13}, {'\0', NULL}};
 
 	i = 0;
 	while (sp[i].sym)
