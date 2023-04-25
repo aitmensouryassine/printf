@@ -1,7 +1,5 @@
 #include "main.h"
 
-int handle_print(const char *format, int *idx, va_list list);
-
 /**
  * _printf - produces output according to a format.
  * @format: a character sting
@@ -54,8 +52,8 @@ int handle_print(const char *format, int *idx, va_list list)
 	specifier_t sp[] = {
 		{'c', print_char}, {'s', print_string},	{'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
-		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_hexadecimal_upper}, {'\0', NULL}};
+		{'u', print_unsigned}, {'X', print_upper_hexa},
+		{'x', print_hexadecimal}, {'o', print_octal}, {'\0', NULL}};
 
 	i = 0;
 	while (sp[i].sym)

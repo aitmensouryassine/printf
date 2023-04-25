@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define ARR_LEN 12
-
 /**
  * print_int - print an integer
  * @list: the optional args list (was passed to _printf)

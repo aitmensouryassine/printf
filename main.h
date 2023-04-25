@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#define ARR_LEN 50
+
 /**
  * struct specifier - a struct for conversion specifiers
  * @sym: first member (i.e. %c, %s, %d)
@@ -18,6 +20,7 @@ typedef struct specifier
 } specifier_t;
 
 int _printf(const char *format, ...);
+int handle_print(const char *, int *idx, va_list);
 int print_string(va_list);
 int print_char(va_list);
 int print_percent(void);
@@ -26,6 +29,6 @@ int print_binary(va_list);
 int print_unsigned(va_list);
 int print_octal(va_list);
 int print_hexadecimal(va_list);
-int print_hexadecimal_upper(va_list);
+int print_upper_hexa(va_list);
 
 #endif
