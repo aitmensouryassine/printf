@@ -30,5 +30,6 @@ int print_unsigned(va_list, char[]);
 int print_octal(va_list, char[]);
 int print_hexadecimal(va_list, char[]);
 int print_upper_hexa(va_list, char[]);
+int print_non_printable(va_list, char[]);
 
 #endif

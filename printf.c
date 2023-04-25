@@ -78,7 +78,8 @@ int handle_print(const char *format, int *idx, va_list list, char buffer[])
 		{'c', print_char}, {'s', print_string},	{'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
 		{'u', print_unsigned}, {'X', print_upper_hexa},
-		{'x', print_hexadecimal}, {'o', print_octal}, {'\0', NULL}};
+		{'x', print_hexadecimal}, {'o', print_octal},
+		{'S', print_non_printable}, {'\0', NULL}};
 
 	i = 0;
 	while (sp[i].sym)
