@@ -5,7 +5,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-#define ARR_LEN 50
+#define BUFFER_SIZE 1024
+#define UNUSED_VARIABLE(X) (void)(X)
 
 /**
  * struct specifier - a struct for conversion specifiers
@@ -20,15 +21,14 @@ typedef struct specifier
 } specifier_t;
 
 int _printf(const char *format, ...);
-int handle_print(const char *, int *idx, va_list);
 int print_string(va_list);
-int print_char(va_list);
+int print_char(va_list, char[]);
 int print_percent(void);
-int print_int(va_list);
+int print_int(va_list, char[]);
 int print_binary(va_list);
-int print_unsigned(va_list);
-int print_octal(va_list);
-int print_hexadecimal(va_list);
-int print_upper_hexa(va_list);
+int print_unsigned(va_list, char[]);
+int print_octal(va_list, char[]);
+int print_hexadecimal(va_list, char[]);
+int print_upper_hexa(va_list, char[]);
 
 #endif

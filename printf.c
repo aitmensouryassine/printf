@@ -1,5 +1,20 @@
 #include "main.h"
 
+int handle_print(const char *, int *idx, va_list, char []);
+
+/**
+ * write_buffer - writes the buffer to std output
+ * @buffer: the buffer
+ * @buffer_length: the buffer length
+ */
+void write_buffer(char buffer[], int *buffer_length)
+{
+	if (*buffer_length >= 1)
+		write(1, &buffer[0], *buffer_length);
+	*buffer_length = 0;
+}
+
+
 /**
  * _printf - produces output according to a format.
  * @format: a character sting
@@ -10,22 +25,31 @@ int _printf(const char *format, ...)
 {
 	int idx = 0, chars_count = 0, is_printed = 0;
 	va_list list;
+	char local_buffer[BUFFER_SIZE];
+	int buffer_idx = 0;
 
 	va_start(list, format);
 
 	if (!format)
 		return (-1);
 
-	while (format[idx])
+	while (format && format[idx])
 	{
 		if (format[idx] != '%')
 		{
-			chars_count += write(1, &format[idx], 1);
+			local_buffer[buffer_idx] = format[idx];
+			buffer_idx++;
+
+			if (buffer_idx == BUFFER_SIZE)
+				write_buffer(local_buffer, &buffer_idx);
+
+			chars_count += 1;
 		}
 		else
 		{
+			write_buffer(local_buffer, &buffer_idx);
 			idx++;
-			is_printed = handle_print(format, &idx, list);
+			is_printed = handle_print(format, &idx, list, local_buffer);
 
 			if (is_printed == -1)
 				return (-1);
@@ -33,7 +57,7 @@ int _printf(const char *format, ...)
 		}
 		idx++;
 	}
-
+	write_buffer(local_buffer, &buffer_idx);
 	va_end(list);
 	return (chars_count);
 }
@@ -43,9 +67,10 @@ int _printf(const char *format, ...)
  * @format: Formatted string passed to _printf.
  * @idx: the index of a char in format.
  * @list: List of arguments to be printed.
+ * @buffer: the buffer (array of chars)
  * Return: 1, 2 or -1;
  */
-int handle_print(const char *format, int *idx, va_list list)
+int handle_print(const char *format, int *idx, va_list list, char buffer[])
 {
 	int i, len = 0;
 
@@ -59,7 +84,7 @@ int handle_print(const char *format, int *idx, va_list list)
 	while (sp[i].sym)
 	{
 		if (sp[i].sym == format[*idx])
-			return (sp[i].f(list));
+			return (sp[i].f(list, buffer));
 		i++;
 	}
 
