@@ -3,6 +3,7 @@
 /**
  * print_str_rev - reverse and print a string
  * @list: list of args passed to _printf
+ * @buffer: the buffer
  * Return: number of printed chars
  */
 int print_str_rev(va_list list, char buffer[])
@@ -10,11 +11,11 @@ int print_str_rev(va_list list, char buffer[])
 	int i = BUFFER_SIZE - 1;
 	char *str = va_arg(list, char *);
 
-	if(!str)
+	if (!str)
 		str = "(null)";
 
 	buffer[i--] = '\0';
-	while(*str)
+	while (*str)
 	{
 		buffer[i--] = *str;
 		str++;
